@@ -12,6 +12,8 @@ share/
 
 tadasi/
 
+__pycache__/
+
 geckodriver.log
 pip-selfcheck.json
 toolkit.conf

@@ -1,4 +1,4 @@
-#!/home/marti/projects/isao/bin/python
+#!/usr/bin/python
 
 import argparse
 import sys
