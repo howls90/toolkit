@@ -1,0 +1,31 @@
+#!/home/marti/projects/isao/bin/python
+
+import argparse
+import sys
+import actions
+
+def sw_action(project, action=None, name=None):
+    switcher = {
+        "show": lambda: actions.show(project),
+        "console": lambda: actions.console(project),
+        "github": lambda: actions.github(project),
+        "ssh": lambda: actions.ssh(project, name),
+        "actions": lambda: actions.actions(),
+        "create": lambda: actions.create(project),
+        "import": lambda: actions.importer(project, name),
+        "goalous": lambda: actions.goalous(),
+        "dev": lambda: actions.dev(project),
+        "projects": lambda: actions.projects(),
+    }
+    f = switcher.get(action,  lambda: "Invalid action")
+    print(f())
+
+if __name__== "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("action", help="Action applied to the project")
+    parser.add_argument("project", help="Select working project", action='store', nargs='?')
+    parser.add_argument("name", help="Select working project", action='store', nargs='?')
+    args = parser.parse_args()
+
+    sw_action(project=args.project, action=args.action, name=args.name)
+    
